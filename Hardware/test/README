@@ -1,0 +1,149 @@
+# ESP32-S3 Test Documentation
+
+## Introduction
+
+This document describes the current PlatformIO test setup for the ESP32-S3
+parking project. It explains how the test suite is organized, which scenarios
+are covered, how validation is performed, and which test types are used.
+
+The suite is split across two files:
+
+- [test_all.cpp](test_all.cpp): Unity test runner and logical/unit-style tests
+- [test_hardware.cpp](test_hardware.cpp): hardware-specific smoke test helpers
+
+Together they verify the reusable modules under `lib/`.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Test Structure](#test-structure)
+- [Covered Scenario](#covered-scenario)
+- [What Is Tested](#what-is-tested)
+- [How It Is Tested](#how-it-is-tested)
+- [Test Types Used](#test-types-used)
+- [Hardware Tests](#hardware-tests)
+- [References](#references)
+
+---
+
+## Test Structure
+
+The project uses a single Unity runner in `test_all.cpp` so PlatformIO can
+reliably discover and execute tests in this project layout. The runner contains:
+
+- individual `test_*` functions for each logical area
+- `setUp()` and `tearDown()` hooks required by Unity
+- one `setup()` function that registers all cases via `RUN_TEST()`
+- an empty `loop()` because tests are executed once
+
+Hardware-touching code is intentionally implemented in `test_hardware.cpp` and
+called from `test_all.cpp`. This keeps hardware logic separate from the runner
+while still executing in one test flow.
+
+---
+
+## Covered Scenario
+
+The scenario covered by the suite is the current parking-lot application model:
+
+- ultrasonic sensors detect distance-based occupancy
+- `ParkingSpace` stores slot state and operation mode
+- `ParkingTile` groups multiple parking spaces and OLED screens
+- `OledScreen` stores display configuration (I2C + layout metadata)
+- `Backend` receives JSON instructions and applies state changes
+
+Additionally, the system is validated for correct behavior under both:
+- manual overrides per parking space
+- full tile-level state updates
+- mixed command sequences (override + tile update)
+
+---
+
+## What Is Tested
+
+### Core logic
+- `OperationEnumParkingSpace` and `OperationEnumParkingTile` enum values
+- `HelperMethod.wait()` timing behavior
+
+### Sensor layer
+- `UltraSonicSensor` stores correct trigger/echo pins
+- ultrasonic hardware smoke test validates real distance measurement (> 0 cm)
+
+### Parking model
+- `ParkingSpace` default state (occupied = true, mode = AUTO)
+- occupancy toggling and mode switching (AUTO ↔ MANUAL)
+- `ParkingTile` ID access
+- parking space count and OLED screen count
+- parking space lookup by ID
+- occupancy forwarding through `ParkingTile`
+
+### Display layer
+- `OledScreen` constructor stores configuration correctly:
+  - sideOfStreet (left/right rendering logic)
+  - SDA pin
+  - SCL pin
+  - I2C address
+  - screen width (128)
+  - screen height (64)
+
+### Backend behavior
+- `Backend.receiveParkingTileInstructions()`:
+  - parking space override command (`parking_override`)
+  - tile status update (`parkingTile`)
+  - mixed command sequences (override followed by tile update)
+
+---
+
+## How It Is Tested
+
+The suite uses small, deterministic Unity assertions:
+
+- enum validation via integer comparison
+- timing validation via `millis()` delta checks
+- model validation via direct object instantiation and getter checks
+- state mutation validation via method calls (`setOccupied`, `changeOperationMode`)
+- backend validation via JSON strings and post-state assertions
+
+### OLED validation approach
+The OLED is **not rendered**, but its configuration is validated purely through
+constructor arguments and getter methods. This avoids hardware dependency in unit tests.
+
+### Hardware smoke test approach
+The ultrasonic sensor test:
+- initializes a real sensor (`setup()`)
+- performs a real distance measurement (`measureDistanceCM()`)
+- prints result to Serial
+- validates `distance > 0`
+
+This ensures basic wiring correctness without requiring complex calibration.
+
+---
+
+## Test Types Used
+
+This project uses Unity-based embedded tests in four categories:
+
+- unit tests (pure logic and enums)
+- state transition tests (ParkingSpace behavior)
+- integration-style tests (ParkingTile + Backend interaction)
+- hardware-in-the-loop smoke tests (ultrasonic sensor)
+
+Currently, no visual OLED verification or full system timing tests are implemented. However, the general function with the backend has been tested manually to ensure that the OLED screens and RGBs show the correct information.
+
+---
+
+## Hardware Tests
+
+Hardware tests are isolated in `test_hardware.cpp` and include:
+
+- ultrasonic sensor initialization on trigger pin 19 and echo pin 20 (configurable)
+- real-world distance measurement via `measureDistanceCM()`
+- validity check (`distance > 0`)
+- serial output logging for debugging
+
+These tests ensure:
+
+- correct GPIO wiring
+- functional sensor response
+- basic board-level I/O stability
+

@@ -1,0 +1,19 @@
+This folder contains the project-specific libraries for the ESP32-S3 PlatformIO project.
+
+The application entry point lives in [src/main.cpp](../src/main.cpp), while the reusable modules are split into separate library folders under `lib/`:
+
+- `lib/Backend/src` for backend communication, WiFi, MQTT, and telemetry handling
+- `lib/HelperMethod/src` for shared helper functions
+- `lib/OledScreen/src` for OLED display control
+- `lib/ParkingSpace/src` for parking-space state and sensor logic
+- `lib/ParkingTile/src` for tile-level aggregation and coordination
+- `lib/UltraSonicSensor/src` for ultrasonic distance measurement
+- `lib/OperationEnums/src` for shared enums used across modules
+
+Each library keeps its `.h` and `.cpp` files together inside its own `src/` folder so PlatformIO can detect and build them automatically.
+
+Project notes:
+
+- The sketch entry point is `src/main.cpp`, not an `.ino` file.
+- Serial output is configured for `115200` baud in `platformio.ini`.
+- The project uses the Arduino framework for the `esp32-s3-devkitm-1` environment.
