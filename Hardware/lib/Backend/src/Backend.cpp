@@ -8,18 +8,18 @@
 #include <ArduinoJson.h>
 
 // ===== CONFIG =====
-const char *WIFI_SSID = "nikiWifi";
-const char *WIFI_PASSWORD = "Niki1234";
+const char *WIFI_SSID = "";
+const char *WIFI_PASSWORD = "";
 
-const char *BACKEND_BASE_URL = "http://217.123.40.211:5000";
-const char *MQTT_HOST = "217.123.40.211";
-const int MQTT_PORT = 1883;
+const char *BACKEND_BASE_URL = "";
+const char *MQTT_HOST = "";
+const int MQTT_PORT = ;
 
 const char *MQTT_USERNAME = "smartcity";
 const char *MQTT_PASSWORD = "smartcitypass";
 
-const char *DEVICE_ID = "esp_2_parking_v3";
-const char *DEVICE_SECRET = "p5lr9h38g5p6mrmfx1j7";
+const char *DEVICE_ID = "";
+const char *DEVICE_SECRET = "";
 const char *DEVICE_TYPE = "esp";
 // ==================
 
