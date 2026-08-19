@@ -72,7 +72,7 @@ The protoboard layout is designed for modularity and ease of assembly. All compo
 
 ### 5. Wiring Diagram
 
-![Wiring Diagram](../../../assets/ProtoBoardWiringDiagram.jpg)
+![Wiring Diagram](../../assets/ProtoBoardWiringDiagram.jpg)
 
 **Legend:**  
 - Red: Power  

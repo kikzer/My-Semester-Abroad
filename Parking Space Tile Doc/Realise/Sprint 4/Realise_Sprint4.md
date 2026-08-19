@@ -80,19 +80,19 @@ All components were tested individually before system integration to ensure reli
 
 Electrical validation was performed using a multimeter to check continuity, verify correct power distribution, and ensure the absence of short circuits. Signal paths were also tested to confirm correct behaviour of sensors, LEDs, and communication interfaces. The OLED display communication via I²C was verified separately to ensure stable operation.
 
-![Multimeter Test](../../../assets/MultiMeterTest.png)
+![Multimeter Test](../../assets/MultiMeterTest.png)
 
 **Figure 1**  
 *Testing every pin/solder connection for continuity.*
 
 In parallel, each software module was tested independently. The ultrasonic sensor module, OLED display module, RGB LED controller, and backend communication module were executed separately to ensure correct functionality before system integration.
 
-![Sensor Test](../../../assets/TestPartsParkingTile.png)
+![Sensor Test](../../assets/TestPartsParkingTile.png)
 
 **Figure 2**  
 *Testing of each sensor to ensure correct functionality.*
 
-![Oled Test](../../../assets/TestPartsBeforeSolder.png)
+![Oled Test](../../assets/TestPartsBeforeSolder.png)
 
 **Figure 3**  
 *Testing of each OLED screen prior to soldering.*
@@ -188,12 +188,12 @@ The system was implemented on a perfboard to improve its mechanical and electric
 
 The system consists of an ESP32-S3 microcontroller, an HC-SR04 ultrasonic sensor, an SSD1306 OLED display, RGB LEDs, and a backend communication module. A 3D-printed housing supports the mechanical structure and improves usability.
 
-![Board from below](../../../assets/BoardfromBelow.png)
+![Board from below](../../assets/BoardfromBelow.png)
 
 **Figure 4**  
 *The perfboard underside showing soldering connections.*
 
-![Board from top](../../../assets/BoardfromTop.png)
+![Board from top](../../assets/BoardFromTop.png)
 
 **Figure 5**  
 *The perfboard top side showing modular component interfaces.*
@@ -212,7 +212,7 @@ A structured cable colour-coding system was used to improve readability and main
 
 This structure reduced wiring complexity and improved debugging efficiency. Components were grouped logically to shorten cable paths and increase system clarity.
 
-![Cable View](../../../assets/CableManagment.png)
+![Cable View](../../assets/CableManagment.png)
 
 **Figure 6**  
 *The tile underside showing cable management.*
@@ -362,7 +362,7 @@ The image below shows the final system test results of the Parking Tile. It conf
 
 The results demonstrate successful system integration and correct behaviour across all subsystems.
 
-![Embedded Test Results](../../../assets/EmbeddedTestParkingTile.png)
+![Embedded Test Results](../../assets/EmbeddedTestParkingTile.png)
 
 **Figure 7**  
 *System test results of all the tests.*
@@ -376,9 +376,8 @@ As a result, the RGB LED changes from green to red, indicating occupancy. Both O
 
 Additionally, the underside of the prototype is visible, showing the perfboard-based hardware implementation and wiring structure.
 
-<video width="640" height="480" controls>
-  <source src="../../../assets/RealiseVideoParkingTile.mp4" type="video/mp4">
-</video>
+*Video not included in this repository due to file size; available on request.*
+
 **Figure 8**  
 *System demonstration in real operation.*
 

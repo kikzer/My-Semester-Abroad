@@ -33,8 +33,8 @@ The [`Niklas` folder](../../../../esp/Niklas/) contains modular code for the mai
 # Implementation of the Wiring (Image Description)
 The wiring connects multiple ultrasonic sensors and status LEDs to the ESP32, as well as one or more SSD1306 OLED displays via I2C (SDA/SCL). Each parking space is associated with a sensor and an RGB LED (red/green). The OLED screens display the number of free slots per side, and the wiring matches the pin assignments in the code.
 
-![TopView](../../../assets/TopView_ParkingTile.png)
-![BottomView](../../../assets/BottomView_ParkingTile.png)
+![TopView](../../assets/TopView_ParkingTile.png)
+![BottomView](../../assets/BottomView_ParkingTile.png)
 # Conclusion and Recommendation
 
 **Conclusion:**  

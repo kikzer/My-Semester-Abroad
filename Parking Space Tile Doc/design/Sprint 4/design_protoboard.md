@@ -160,7 +160,7 @@ The design also allows future expansion through additional sensors or communicat
 
 The following wiring diagram illustrates the complete electrical connections between the ESP32-S3 microcontroller and all peripheral components on the protoboard. This schematic provides a visual reference for assembly, troubleshooting, and future modifications. All connections follow standard color-coding conventions to ensure clarity and reduce assembly errors.
 
-![Wiring Diagram](../../../assets/ProtoBoardWiringDiagram.jpg)
+![Wiring Diagram](../../assets/ProtoBoardWiringDiagram.jpg)
 
 Figure 1
 Parking Tile Protoboard Wiring Diagram

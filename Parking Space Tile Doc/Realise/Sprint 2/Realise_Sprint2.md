@@ -29,7 +29,7 @@ The `Niklas` folder contains modular code for different hardware components used
 ## Implementation of the Wiring (Image Description)
 The following image shows the wiring of the SSD1306 OLED display to the ESP32 microcontroller using the I2C protocol:
 
-![OLED display wiring via I2C](../../../assets/OledWiring_I2C.jpg)
+![OLED display wiring via I2C](../../assets/OledWiring_I2C.jpg)
 
 **Explanation:**
 - The SDA and SCL lines of the OLED display are connected to the corresponding I2C pins of the ESP32.

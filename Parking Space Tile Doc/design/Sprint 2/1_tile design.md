@@ -38,7 +38,7 @@ This document provides an overview of the design and functionality of the parkin
 
 ## 3. Layout Overview
 
-![alt text](../../../assets/TileDesign.png)
+![alt text](../../assets/TileDesign.png)
 
 **Parking orientation:** Parallel to the street (lengthwise)
 
@@ -79,7 +79,7 @@ The **Ultrasonic sensors (HC-SR04)** work by measuring distance:
 
 ## 8. Wiring Diagram
 
-![alt text](../../../assets/ParkingTileWiring.png)
+![alt text](../../assets/ParkingTileWiring.png)
 
 ### Description:
 
@@ -97,7 +97,7 @@ The **Ultrasonic sensors (HC-SR04)** work by measuring distance:
 
 ## 9. Communication with the Backend
 
-![alt text](../../../assets/BackendCommunication.png)
+![alt text](../../assets/BackendCommunication.png)
 
 The following diagram illustrates the interaction between the embedded system (parking tile) and the backend:
 
